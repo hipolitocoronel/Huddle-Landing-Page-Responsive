@@ -1,0 +1,159 @@
+@use 'initial';
+@use 'variables';
+@use 'section';
+@use 'mixins';
+@use 'footer';
+
+.main-container{
+    width: 375px;
+    border: 1px solid #eee;
+    margin: 0 auto;
+    @include mixins.desktop-view;
+
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: auto;
+    width: 345px;
+    height: 45px;
+    @include mixins.desktop-view(1300px, 90px);
+    @include mixins.flexbox(row, space-between, end);
+    &__logo{
+        width: 110px;
+        @include mixins.desktop-view(200px);
+    }
+
+    &__button{
+        box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.1);
+        @include mixins.button(#fff, unset, #000, 95px, 23px, .6em);
+        @include mixins.desktop-view(200px, 45px);
+    }
+}
+
+header{
+    background: variables.$Very-Pale-Cyan;
+    background: {
+        image:url('../images/bg-hero-mobile.svg');
+        position: top;
+        repeat: no-repeat;
+    }
+    margin-bottom: 65px;
+
+    .header{
+        margin: 85px auto 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+        @include mixins.desktop-view(1300px);
+        @include mixins.flexbox(row, center, center, 65px);   
+
+        &-information{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 35px ;
+            @include mixins.desktop-view(515px);
+            @include mixins.flexbox(column, start, start);   
+
+            .header__title{
+                font-family: variables.$Headings, sans-serif;
+                text-align: center;
+                font-size: 1.4em;
+
+                @include mixins.desktop-view(430px);
+                @include mixins.text(2.15em, start, #000);
+                
+            }
+        
+            .header__description{
+                margin-top: 35px;
+                text-align: center;
+                font-size: .9em;
+                @include mixins.text(1em, start, #000);
+            }
+    
+            .header__button{
+                margin-top: 32px;
+                padding: 10px 50px;
+                @include mixins.button(variables.$Pink, unset, #fff, 245px, 45px, .7em);
+                @include mixins.desktop-view(285px, 60px, .8em);
+                @include mixins.button-hover(rgb(243, 57, 138))
+            }
+        }
+        
+    
+        &__illustration{
+            width: 100%;
+            padding: 0 45px;
+            margin-bottom: 30px;
+        }
+    }
+}
+
+@media (min-width: 1440px){
+    header{
+        background-image: url(../images/bg-hero-desktop.svg);
+        margin-bottom: 155px;
+        .header{
+            padding: 0;
+            margin-top: 65px;
+
+            &__illustration{
+                margin-bottom: 65px;
+                padding: 0px 0px !important;
+             }
+        }
+    }
+    
+}
+
+
+.section-together, .section-users{
+    @include section.section-style;
+}
+
+.section-conversation{
+    @include section.section-style(row-reverse);
+}
+
+.section-community{
+    width: 350px;
+    padding: 45px 0px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+    position: relative;
+    bottom: -65px;
+    background: #fff;
+
+    @include mixins.desktop-view(800px);
+
+    .community__title{
+        text-align: center;
+        font-size: 1.08em;
+        @include mixins.text(1.8em, center, #000);
+    }
+    .community__button{
+        @include mixins.button(variables.$Pink, unset, #fff, 200px, 40px, .7em);
+        @include mixins.desktop-view(400px, 80px, 1.1em);
+        @include mixins.button-hover(rgb(243, 57, 138))
+    }
+
+}
+
+@media (min-width: 1330px){
+    .section-community{
+        padding-top: 65px;
+        bottom: -95px;
+    }
+}
+
+
